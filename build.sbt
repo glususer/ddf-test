@@ -1,15 +1,13 @@
-import Common._
-import sbt.Keys._
 
 organization := "io.ddf"
 
 name := "ddf"
 
-version := ddfVersion
+version := "1.0"
 
 retrieveManaged := true
 
-scalaVersion := theScalaVersion
+scalaVersion := "2.10.4"
 
 scalacOptions := Seq("-unchecked", "-optimize", "-deprecation")
 
@@ -24,11 +22,11 @@ concurrentRestrictions in Global += Tags.limit(Tags.Test, 1)
 
 conflictManager := ConflictManager.strict
 
-commonSettings
-
-libraryDependencies ++= Seq("com.univocity" % "univocity-parsers" % "1.5.5",
+libraryDependencies ++= Seq( "io.ddf" %% "ddf_core" % "1.5.0-SNAPSHOT",
+  "com.univocity" % "univocity-parsers" % "1.5.5",
   "com.clearspring.analytics" % "stream" % "2.7.0" exclude("asm", "asm"),
-  "org.scalatest" %% "scalatest" % "3.0.0-M7")
+  "org.scalatest" %% "scalatest" % "3.0.0-M7"
+)
 
 val com_adatao_unmanaged = Seq(
   "com.adatao.unmanaged.net.rforge" % "REngine" % "2.1.1.compiled",
